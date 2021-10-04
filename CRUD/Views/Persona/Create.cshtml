@@ -1,0 +1,27 @@
+﻿@model CRUD.Models.PersonaDTO
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Persona", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="exampleInputEmail1">@Html.DisplayNameFor(x => x.nombres)</label>
+        @Html.TextBoxFor(x => x.nombres, new { @class = "form-control", @autocomplete = "off" })
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">@Html.DisplayNameFor(x => x.apellidos)</label>
+        @Html.TextBoxFor(x => x.apellidos, new { @class = "form-control", @autocomplete = "off" })
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">@Html.DisplayNameFor(x => x.fechaNacimiento)</label>
+        @Html.TextBoxFor(x => x.fechaNacimiento, new { @class = "form-control", @autocomplete = "off" })
+    </div>
+
+    <button type="submit" class="btn btn-default">Guardar</button>
+}

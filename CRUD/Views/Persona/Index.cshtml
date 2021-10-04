@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CRUD.Models.PersonaDTO>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<div class="row">
+    <div class="col-12">
+        @Html.ActionLink("Añadir", "Create", "Persona", new { @class = "btn btn-success" })
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.nombres)</th>
+                    <th>@Html.DisplayNameFor(x => x.apellidos)</th>
+                    <th>@Html.DisplayNameFor(x => x.fechaNacimiento)</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    foreach(CRUD.Models.PersonaDTO item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(x => item.nombres)</td>
+                            <td>@Html.DisplayFor(x => item.apellidos)</td>
+                            <td>@Html.DisplayFor(x => item.fechaNacimiento)</td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", "Persona", new { id = item.id },  new { @class = "btn btn-warning" })
+                                @Html.ActionLink("Eliminar", "Delete", "Persona", new { id = item.id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
